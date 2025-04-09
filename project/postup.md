@@ -33,7 +33,7 @@ Pro visualisaci bude použit Flatpak a pro práci s databází modul SQLAlchemy.
 
 ### Struktura
 
-Třídy a metody pro založení neexistující databáze budou v odděleném zdrojovém souboru 'base.py'.
+~~Třídy a metody pro založení neexistující databáze budou v odděleném zdrojovém souboru 'base.py'.~~
 
-(Třída pro import bude v odděleném zdrojovém souboru 'import.py'.)
+~~(Třída pro import bude v odděleném zdrojovém souboru 'import.py'.)~~
 
