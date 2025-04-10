@@ -1,8 +1,11 @@
 # pip install sql_alchemy
 # pip install Flask-SQLAlchemy
+# pip install pandas
 
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
+import csv
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -114,37 +117,51 @@ def index():
 if __name__ == '__main__':
 #    app.run(debug=True)  
 
-  with app.app_context():
-    customers = Customer.query.all()
-    result = ''
-    for customer in customers:
-      result += f'ID: {customer.id}, Name: {customer.name}, Phone: {customer.phone}, E-mail: {customer.email}'
-    print(result)
+  with open('data3a.csv', mode='r') as file:
+    csv_reader = csv.reader(file)
 
-  with app.app_context():
-    invoice_rules = InvoiceRule.query.all()
-    result = ''
-    for invoice_rule in invoice_rules:
-      result += f'ID: {invoice_rule.id}, Name: {invoice_rule.name}'
-    print(result)
+    #header = next(csv_reader)
 
-  with app.app_context():
-    price_lists = PriceList.query.all()
-    result = ''
-    for price_list in price_lists:
-      result += f'ID: {price_list.id}, Name: {price_list.name}'
-    print(result)
+    for row in csv_reader:
+      print(row)
 
-  with app.app_context():
-    contracts = Contract.query.all()
-    result = ''
-    for contract in contracts:
-      result += f'ID: {contract.id}, Name: {contract.name}'
-    print(result)    
 
-  with app.app_context():
-    transactions = Transaction.query.all()
-    result = ''
-    for transaction in transactions:
-      result += f'ID: {transaction.id}, Name: {transaction.name}'
-    print(result)    
+  df = pd.read_csv('data3b.csv')
+
+  print(df)
+
+
+  # with app.app_context():
+  #   customers = Customer.query.all()
+  #   result = ''
+  #   for customer in customers:
+  #     result += f'ID: {customer.id}, Name: {customer.name}, Phone: {customer.phone}, E-mail: {customer.email}'
+  #   print(result)
+
+  # with app.app_context():
+  #   invoice_rules = InvoiceRule.query.all()
+  #   result = ''
+  #   for invoice_rule in invoice_rules:
+  #     result += f'ID: {invoice_rule.id}, Name: {invoice_rule.name}'
+  #   print(result)
+
+  # with app.app_context():
+  #   price_lists = PriceList.query.all()
+  #   result = ''
+  #   for price_list in price_lists:
+  #     result += f'ID: {price_list.id}, Name: {price_list.name}'
+  #   print(result)
+
+  # with app.app_context():
+  #   contracts = Contract.query.all()
+  #   result = ''
+  #   for contract in contracts:
+  #     result += f'ID: {contract.id}, Name: {contract.name}'
+  #   print(result)    
+
+  # with app.app_context():
+  #   transactions = Transaction.query.all()
+  #   result = ''
+  #   for transaction in transactions:
+  #     result += f'ID: {transaction.id}, Name: {transaction.name}'
+  #   print(result)    
